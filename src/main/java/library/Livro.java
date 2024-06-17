@@ -47,6 +47,7 @@ public class Livro {
         this.exemplaresAlugados = exemplaresAlugados;
     }
 
+    // Formato que a classe vai ser printada
     @Override
     public String toString() {
         return "Livro{" +

@@ -8,11 +8,11 @@ import java.net.Socket;
 public class Servidor {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(12345)) {
-            System.out.println("SERVIDOR INICIADO");
+            System.out.println("Servidor Iniciado");
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();
-                    System.out.println("CONECTOU");
+                    System.out.println("Usuario conectou");
                     atenderCliente(socket);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -25,8 +25,8 @@ public class Servidor {
 
     private static void atenderCliente(Socket socket) {
         try (
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // Serve para receber dados do cliente para o servidor
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true)// É usado para enviar dados do servidor para o cliente
         ) {
             Biblioteca biblioteca = JsonModel.lerBiblioteca();
             String comando;
@@ -36,6 +36,7 @@ public class Servidor {
                     case "1":
                         out.println(biblioteca);
                         out.println("END"); 
+                        System.out.println("Lista de livros foi mostrado");
                         break;
                     case "2":
                         String livroParaAlugar = in.readLine();

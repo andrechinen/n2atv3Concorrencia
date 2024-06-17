@@ -21,6 +21,7 @@ public class Biblioteca {
 
     public void adicionarLivro(Livro livro) {
         livros.add(livro);
+        System.out.println("Livro '" + livro.getTitulo() + "' foi adicionado na lista com sucesso");
     }
 
     public boolean alugarLivro(String nome) {
@@ -28,6 +29,7 @@ public class Biblioteca {
             if (livro.getTitulo().equalsIgnoreCase(nome) && livro.getExemplares() > 0) {
                 livro.setExemplaresAlugados(livro.getExemplaresAlugados() + 1);
                 livro.setExemplares(livro.getExemplares() - 1);
+                System.out.println("Livro '" + livro.getTitulo() + "' foi alugado com sucesso");
                 return true;
             }
         }
@@ -39,6 +41,7 @@ public class Biblioteca {
             if (livro.getTitulo().equalsIgnoreCase(nome) && livro.getExemplaresAlugados() > 0) {
                 livro.setExemplaresAlugados(livro.getExemplaresAlugados() - 1);
                 livro.setExemplares(livro.getExemplares() + 1);
+                System.out.println("Livro '" + livro.getTitulo() + "' foi devolvido com sucesso");
                 return true;
             }
         }
@@ -51,12 +54,14 @@ public class Biblioteca {
             Livro livro = iterator.next();
             if (livro.getTitulo().equalsIgnoreCase(nome)) {
                 iterator.remove();
+                System.out.println("Livro '" + livro.getTitulo() + "' foi removido da lista com sucesso");
                 return true;
             }
         }
         return false;
     }
 
+    // Formato que a classe vai ser printada
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

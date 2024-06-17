@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Cliente {
     public static void main(String[] args) {
         try (Socket socket = new Socket("localhost", 12345);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // É usado para enviar dados do cliente para o servidor
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // Serve para receber dados do servidor para o cliente
              Scanner scanner = new Scanner(System.in)) {
 
             while (true) {
